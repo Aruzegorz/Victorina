@@ -1,0 +1,78 @@
+2025-07-14 06:19:34,795 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.6:5000
+2025-07-14 06:19:34,796 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-14 06:19:42,075 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:42] "GET / HTTP/1.1" 200 -
+2025-07-14 06:19:42,203 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:42] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-07-14 06:19:42,205 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:42] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-07-14 06:19:42,338 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:42] "GET /api/daily_challenge/demo_1752463182213 HTTP/1.1" 200 -
+2025-07-14 06:19:42,346 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:42] "GET /api/leaderboard/overall HTTP/1.1" 200 -
+2025-07-14 06:19:42,385 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:42] "[35m[1mGET /health HTTP/1.1[0m" 500 -
+2025-07-14 06:19:42,394 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:42] "GET /api/profile/demo_1752463182213 HTTP/1.1" 200 -
+2025-07-14 06:19:46,224 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:46] "GET / HTTP/1.1" 200 -
+2025-07-14 06:19:46,263 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-07-14 06:19:46,266 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:46] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-07-14 06:19:46,403 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:46] "GET /api/daily_challenge/demo_1752463186275 HTTP/1.1" 200 -
+2025-07-14 06:19:46,413 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:46] "GET /api/leaderboard/overall HTTP/1.1" 200 -
+2025-07-14 06:19:46,452 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:46] "[35m[1mGET /health HTTP/1.1[0m" 500 -
+2025-07-14 06:19:46,463 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:46] "GET /api/profile/demo_1752463186275 HTTP/1.1" 200 -
+2025-07-14 06:19:50,122 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/history/easy HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,177 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/history/medium HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,317 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/history/hard HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,371 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/science/easy HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,426 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/science/medium HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,479 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/science/hard HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,544 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/geography/easy HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,598 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/geography/medium HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,652 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/geography/hard HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,709 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/sports/easy HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,763 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/sports/medium HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,819 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/sports/hard HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,873 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/technology/easy HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,927 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/technology/medium HTTP/1.1[0m" 404 -
+2025-07-14 06:19:50,982 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:50] "[33mGET /api/questions/technology/hard HTTP/1.1[0m" 404 -
+2025-07-14 06:19:51,038 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:51] "[33mGET /api/questions/arts/easy HTTP/1.1[0m" 404 -
+2025-07-14 06:19:51,092 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:51] "[33mGET /api/questions/arts/medium HTTP/1.1[0m" 404 -
+2025-07-14 06:19:51,143 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:51] "[33mGET /api/questions/arts/hard HTTP/1.1[0m" 404 -
+2025-07-14 06:19:55,540 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:55] "GET / HTTP/1.1" 200 -
+2025-07-14 06:19:55,579 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-07-14 06:19:55,582 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:55] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-07-14 06:19:55,720 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:55] "GET /api/daily_challenge/demo_1752463195590 HTTP/1.1" 200 -
+2025-07-14 06:19:55,731 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:55] "GET /api/leaderboard/overall HTTP/1.1" 200 -
+2025-07-14 06:19:55,853 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:55] "[35m[1mGET /health HTTP/1.1[0m" 500 -
+2025-07-14 06:19:55,863 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:55] "GET /api/profile/demo_1752463195590 HTTP/1.1" 200 -
+2025-07-14 06:19:58,887 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:19:58] "[33mGET /api/questions/history/easy HTTP/1.1[0m" 404 -
+2025-07-14 06:20:02,102 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:20:02] "GET / HTTP/1.1" 200 -
+2025-07-14 06:20:02,141 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:20:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-07-14 06:20:02,142 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:20:02] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-07-14 06:20:02,272 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:20:02] "GET /api/daily_challenge/demo_1752463202151 HTTP/1.1" 200 -
+2025-07-14 06:20:02,284 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:20:02] "GET /api/leaderboard/overall HTTP/1.1" 200 -
+2025-07-14 06:20:02,322 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:20:02] "[35m[1mGET /health HTTP/1.1[0m" 500 -
+2025-07-14 06:20:02,331 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:20:02] "GET /api/profile/demo_1752463202151 HTTP/1.1" 200 -
+2025-07-14 06:21:04,947 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.6:5000
+2025-07-14 06:21:04,947 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-14 06:21:53,023 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:53] "GET / HTTP/1.1" 200 -
+2025-07-14 06:21:53,145 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-07-14 06:21:53,147 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:53] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-07-14 06:21:53,264 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:53] "GET /api/daily_challenge/demo_1752463313153 HTTP/1.1" 200 -
+2025-07-14 06:21:53,272 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:53] "GET /api/leaderboard/overall HTTP/1.1" 200 -
+2025-07-14 06:21:53,305 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:53] "[35m[1mGET /health HTTP/1.1[0m" 500 -
+2025-07-14 06:21:53,314 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:53] "GET /api/profile/demo_1752463313153 HTTP/1.1" 200 -
+2025-07-14 06:21:55,281 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:55] "GET / HTTP/1.1" 200 -
+2025-07-14 06:21:55,324 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-07-14 06:21:55,325 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:55] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-07-14 06:21:55,436 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:55] "GET /api/daily_challenge/demo_1752463315332 HTTP/1.1" 200 -
+2025-07-14 06:21:55,446 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:55] "GET /api/leaderboard/overall HTTP/1.1" 200 -
+2025-07-14 06:21:55,480 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:55] "[35m[1mGET /health HTTP/1.1[0m" 500 -
+2025-07-14 06:21:55,487 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:21:55] "GET /api/profile/demo_1752463315332 HTTP/1.1" 200 -
+2025-07-14 06:22:00,896 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:22:00] "GET /api/profile/demo_1752463315332 HTTP/1.1" 200 -
+2025-07-14 06:23:20,984 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.6:5000
+2025-07-14 06:23:20,985 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-14 06:23:56,565 - werkzeug - INFO - 192.168.1.6 - - [14/Jul/2025 06:23:56] "[33mGET /api/questions/history/easy HTTP/1.1[0m" 404 -

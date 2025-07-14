@@ -1,0 +1,1139 @@
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --success-color: #48bb78;
+    --warning-color: #ed8936;
+    --error-color: #f56565;
+    --easy-color: #48bb78;
+    --medium-color: #ed8936;
+    --hard-color: #f56565;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --bg-white: #ffffff;
+    --bg-light: #f7fafc;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 4px 20px rgba(0,0,0,0.1);
+    --shadow-md: 0 8px 32px rgba(0,0,0,0.15);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    min-height: 100vh;
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 420px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+/* Экраны */
+.screen {
+    display: none;
+    padding: 20px;
+    min-height: 100vh;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Заголовок с приветствием */
+.user-greeting {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.user-greeting h1 {
+    color: white;
+    font-size: 1.8em;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-weight: 600;
+}
+
+.user-greeting p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1em;
+}
+
+/* Ежедневное задание */
+.daily-challenge {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-sm);
+}
+
+.challenge-header {
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.challenge-text {
+    color: #4a5568;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.challenge-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar-small {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill-small {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success-color), #38a169);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 3px;
+}
+
+#challengeStatus {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* Вкладки меню */
+.menu-tabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 8px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+.tab-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.tab-btn:hover:not(.active) {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+/* Содержимое вкладок */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Режимы игры */
+.game-modes {
+    margin-bottom: 25px;
+}
+
+.game-modes h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.mode-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    text-align: left;
+}
+
+.mode-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.mode-btn.normal {
+    border-left: 4px solid var(--primary-color);
+}
+
+.mode-btn.marathon {
+    border-left: 4px solid var(--warning-color);
+}
+
+.mode-icon {
+    font-size: 2em;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.mode-btn.marathon .mode-icon {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+}
+
+.mode-info h4 {
+    font-size: 1.1em;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.mode-info p {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* Категории */
+.categories h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.category-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid transparent;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.category-icon {
+    font-size: 2.5em;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.category-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95em;
+    margin-bottom: 4px;
+}
+
+.category-count {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+}
+
+/* Профиль */
+.profile-header {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8em;
+    margin-right: 15px;
+    color: white;
+}
+
+.profile-info h3 {
+    color: var(--text-primary);
+    font-size: 1.3em;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.profile-info p {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* Достижения */
+.achievements-section, .stats-section {
+    margin-bottom: 25px;
+}
+
+.achievements-section h3, .stats-section h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.achievement-item {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.achievement-item.unlocked {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+    transform: scale(1.02);
+}
+
+.achievement-item.locked {
+    opacity: 0.6;
+    filter: grayscale(1);
+}
+
+.achievement-icon {
+    font-size: 1.8em;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.achievement-name {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.achievement-desc {
+    font-size: 0.7em;
+    color: var(--text-secondary);
+    line-height: 1.3;
+}
+
+/* Статистика */
+.stats-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.stat-item {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.stat-category {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1em;
+}
+
+.stat-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    font-size: 0.85em;
+}
+
+.stat-detail {
+    text-align: center;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: var(--primary-color);
+    display: block;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.8em;
+}
+
+/* Выбор сложности */
+.difficulty-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.difficulty-header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.difficulty-header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.difficulty-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.difficulty-btn {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: none;
+    border-radius: 16px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    text-align: left;
+}
+
+.difficulty-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.difficulty-btn.easy {
+    border-left: 5px solid var(--easy-color);
+}
+
+.difficulty-btn.medium {
+    border-left: 5px solid var(--warning-color);
+}
+
+.difficulty-btn.hard {
+    border-left: 5px solid var(--error-color);
+}
+
+.difficulty-icon {
+    font-size: 2.5em;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+}
+
+.difficulty-btn.easy .difficulty-icon {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+}
+
+.difficulty-btn.medium .difficulty-icon {
+    background: linear-gradient(135deg, #ed8936, #dd6b20);
+}
+
+.difficulty-btn.hard .difficulty-icon {
+    background: linear-gradient(135deg, #f56565, #e53e3e);
+}
+
+.difficulty-info h3 {
+    font-size: 1.4em;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.difficulty-info p {
+    color: var(--text-secondary);
+    font-size: 0.95em;
+    margin-bottom: 6px;
+}
+
+.points {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Улучшенный экран викторины */
+.quiz-header-enhanced {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.quiz-top-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.quiz-progress-info, .quiz-score-info {
+    display: flex;
+    gap: 12px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.quiz-progress-info span, .quiz-score-info span {
+    color: var(--primary-color);
+    background: rgba(102, 126, 234, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85em;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e7ff;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}
+
+.hints-panel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hint-btn {
+    padding: 8px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.hint-btn:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.hint-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.hints-count {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    margin-left: auto;
+}
+
+/* Улучшенный контейнер вопросов */
+.question-container-enhanced {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.question-container-enhanced h2 {
+    color: var(--text-primary);
+    margin-bottom: 25px;
+    line-height: 1.4;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.answer-btn {
+    padding: 16px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+    text-align: left;
+    line-height: 1.4;
+    font-weight: 500;
+    position: relative;
+}
+
+.answer-btn:hover:not(.disabled) {
+    border-color: var(--primary-color);
+    background: #f0f4ff;
+    transform: translateX(4px);
+}
+
+.answer-btn.correct {
+    background: linear-gradient(135deg, #68d391 0%, #38b2ac 100%);
+    border-color: #38a169;
+    color: white;
+    box-shadow: 0 4px 20px rgba(56, 161, 105, 0.3);
+}
+
+.answer-btn.incorrect {
+    background: linear-gradient(135deg, #fc8181 0%, #f56565 100%);
+    border-color: #e53e3e;
+    color: white;
+    box-shadow: 0 4px 20px rgba(229, 62, 62, 0.3);
+}
+
+.answer-btn.disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.answer-btn.hidden {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.explanation {
+    background: linear-gradient(135deg, #bee3f8 0%, #90cdf4 100%);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 15px;
+    border-left: 4px solid #3182ce;
+}
+
+.explanation h4 {
+    color: #2c5282;
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+.explanation p {
+    color: #2d3748;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+/* Улучшенные кнопки */
+.next-btn-enhanced {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.next-btn-enhanced:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Улучшенный экран результатов */
+.results-header-enhanced {
+    text-align: center;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.results-header-enhanced h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.player-name {
+    font-size: 1.2em;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.result-card-enhanced {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-md);
+}
+
+.result-main {
+    text-align: center;
+}
+
+.result-score {
+    margin-bottom: 25px;
+}
+
+.final-score {
+    font-size: 4em;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+.final-percentage {
+    font-size: 1.8em;
+    color: #4c51bf;
+    font-weight: 600;
+}
+
+.result-details {
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.detail-item span:last-child {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.result-grade {
+    margin-bottom: 20px;
+}
+
+.grade-text {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.grade-message {
+    color: var(--text-secondary);
+    font-size: 1.1em;
+    line-height: 1.4;
+}
+
+/* Новые достижения */
+.new-achievements {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.new-achievements h3 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.new-achievement-item {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+.new-achievement-icon {
+    font-size: 1.5em;
+}
+
+.new-achievement-info h4 {
+    color: var(--text-primary);
+    font-size: 1em;
+    margin-bottom: 2px;
+}
+
+.new-achievement-info p {
+    color: var(--text-secondary);
+    font-size: 0.85em;
+}
+
+/* Действия с результатами */
+.result-actions-enhanced {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.action-btn {
+    padding: 14px 16px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    font-size: 0.95em;
+}
+
+.action-btn.play-again {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #2c5aa0;
+}
+
+.action-btn.share-result {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+    color: #8b4513;
+}
+
+.action-btn.view-profile {
+    background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+    color: #6b4e71;
+    grid-column: 1 / -1;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Рейтинг */
+.leaderboard-filters {
+    margin-bottom: 20px;
+}
+
+.leaderboard-filters select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: white;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.leaderboard-list {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.leaderboard-item:last-child {
+    border-bottom: none;
+}
+
+.rank {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1em;
+    min-width: 40px;
+    text-align: center;
+}
+
+.rank.medal {
+    font-size: 1.3em;
+}
+
+.player-info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.player-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.player-stats {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+}
+
+.player-score {
+    text-align: right;
+    font-weight: 600;
+    color: #4c51bf;
+}
+
+/* Загрузка */
+.loading-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+    max-width: 300px;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin: 0 auto 25px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-content h2 {
+    margin-bottom: 10px;
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
+.loading-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.loading-tips {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.loading-tips p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%;
+    }
+    
+    .screen {
+        padding: 15px;
+    }
+    
+    .user-greeting h1 {
+        font-size: 1.6em;
+    }
+    
+    .final-score {
+        font-size: 3.5em;
+    }
+    
+    .quiz-top-info {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .quiz-progress-info, .quiz-score-info {
+        justify-content: center;
+    }
+    
+    .result-actions-enhanced {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 360px) {
+    .difficulty-btn, .mode-btn {
+        padding: 14px;
+    }
+    
+    .difficulty-icon, .mode-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.8em;
+    }
+    
+    .quiz-progress-info, .quiz-score-info {
+        gap: 8px;
+    }
+    
+    .quiz-progress-info span, .quiz-score-info span {
+        font-size: 0.8em;
+        padding: 3px 6px;
+    }
+}
+
+/* Темная тема для Telegram */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    }
+    
+    .container {
+        background: rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Анимации */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+    40%, 43% { transform: translateY(-10px); }
+    70% { transform: translateY(-5px); }
+    90% { transform: translateY(-2px); }
+}
+
+.bounce {
+    animation: bounce 1s;
+}
+
+/* Скролл */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}

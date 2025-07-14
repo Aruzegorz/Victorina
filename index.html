@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Умная викторина Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Главное меню -->
+        <div id="mainMenu" class="screen active">
+            <div class="header">
+                <div class="user-greeting">
+                    <h1>👋 Привет, <span id="userName">Игрок</span>!</h1>
+                    <p>Готовы к интеллектуальному вызову?</p>
+                </div>
+                
+                <div class="daily-challenge" id="dailyChallenge">
+                    <div class="challenge-header">🎯 Задание дня</div>
+                    <div class="challenge-content">
+                        <div class="challenge-text" id="challengeText">Загрузка...</div>
+                        <div class="challenge-progress">
+                            <div class="progress-bar-small">
+                                <div id="challengeProgress" class="progress-fill-small"></div>
+                            </div>
+                            <span id="challengeStatus">0/3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-tabs">
+                <button class="tab-btn active" onclick="showTab('categories')">🎮 Играть</button>
+                <button class="tab-btn" onclick="showTab('profile')">👤 Профиль</button>
+                <button class="tab-btn" onclick="showTab('leaderboard')">🏆 Рейтинг</button>
+            </div>
+            
+            <!-- Вкладка "Играть" -->
+            <div id="categoriesTab" class="tab-content active">
+                <div class="game-modes">
+                    <h3>🎮 Режимы игры</h3>
+                    <button class="mode-btn normal" onclick="selectGameMode('normal')">
+                        <span class="mode-icon">⚡</span>
+                        <div class="mode-info">
+                            <h4>Обычный режим</h4>
+                            <p>7 вопросов, выбор сложности</p>
+                        </div>
+                    </button>
+                    <button class="mode-btn marathon" onclick="selectGameMode('marathon')">
+                        <span class="mode-icon">🏃‍♂️</span>
+                        <div class="mode-info">
+                            <h4>Марафон</h4>
+                            <p>20 вопросов, смешанная сложность</p>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="categories" id="categoriesContainer">
+                    <h3>📚 Выберите категорию</h3>
+                    <!-- Категории будут добавлены динамически -->
+                </div>
+            </div>
+            
+            <!-- Вкладка "Профиль" -->
+            <div id="profileTab" class="tab-content">
+                <div class="profile-header">
+                    <div class="avatar">👤</div>
+                    <div class="profile-info">
+                        <h3 id="profileName">Загрузка...</h3>
+                        <p id="profileStats">Статистика загружается...</p>
+                    </div>
+                </div>
+                
+                <div class="achievements-section">
+                    <h3>🏆 Достижения</h3>
+                    <div id="achievementsList" class="achievements-grid">
+                        <!-- Достижения будут добавлены динамически -->
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <h3>📊 Статистика по категориям</h3>
+                    <div id="categoryStats" class="stats-grid">
+                        <!-- Статистика будет добавлена динамически -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вкладка "Рейтинг" -->
+            <div id="leaderboardTab" class="tab-content">
+                <div class="leaderboard-filters">
+                    <select id="leaderboardCategory" onchange="loadLeaderboard()">
+                        <option value="overall">🌟 Общий рейтинг</option>
+                        <option value="history">🏛 История</option>
+                        <option value="science">🔬 Наука</option>
+                        <option value="geography">🌍 География</option>
+                        <option value="sports">⚽ Спорт</option>
+                        <option value="technology">💻 Технологии</option>
+                        <option value="arts">🎨 Искусство</option>
+                    </select>
+                </div>
+                
+                <div id="leaderboardList" class="leaderboard-list">
+                    <!-- Рейтинг будет загружен динамически -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран выбора сложности -->
+        <div id="difficultyScreen" class="screen">
+            <div class="difficulty-header">
+                <h1>⚙️ Выберите сложность</h1>
+                <p>Категория: <span id="selectedCategory">История</span></p>
+            </div>
+            
+            <div class="difficulty-options">
+                <button class="difficulty-btn easy" onclick="startQuiz('easy')">
+                    <div class="difficulty-icon">🟢</div>
+                    <div class="difficulty-info">
+                        <h3>Легкий</h3>
+                        <p>Базовые вопросы для начинающих</p>
+                        <span class="points">+10 очков за ответ</span>
+                    </div>
+                </button>
+                
+                <button class="difficulty-btn medium" onclick="startQuiz('medium')">
+                    <div class="difficulty-icon">🟡</div>
+                    <div class="difficulty-info">
+                        <h3>Средний</h3>
+                        <p>Вопросы для знатоков</p>
+                        <span class="points">+20 очков за ответ</span>
+                    </div>
+                </button>
+                
+                <button class="difficulty-btn hard" onclick="startQuiz('hard')">
+                    <div class="difficulty-icon">🔴</div>
+                    <div class="difficulty-info">
+                        <h3>Сложный</h3>
+                        <p>Только для экспертов</p>
+                        <span class="points">+30 очков за ответ</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Экран викторины (обновленный) -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-header-enhanced">
+                <div class="quiz-top-info">
+                    <div class="quiz-progress-info">
+                        <span id="questionNumber">1/7</span>
+                        <span id="currentCategory">🏛 История</span>
+                        <span id="currentDifficulty">🟢 Легкий</span>
+                    </div>
+                    <div class="quiz-score-info">
+                        <span id="score">Счет: 0</span>
+                        <span id="timer">⏱ --:--</span>
+                    </div>
+                </div>
+                
+                <div class="progress-bar">
+                    <div id="progress" class="progress-fill"></div>
+                </div>
+                
+                <div class="hints-panel">
+                    <button id="hint5050" class="hint-btn" onclick="useHint('5050')" title="50/50">
+                        🔄 50/50
+                    </button>
+                    <button id="hintSkip" class="hint-btn" onclick="useHint('skip')" title="Пропустить">
+                        ⏭ Пропуск
+                    </button>
+                    <span class="hints-count">Подсказки: <span id="hintsLeft">2</span></span>
+                </div>
+            </div>
+            
+            <div class="question-container-enhanced">
+                <h2 id="questionText">Вопрос загружается...</h2>
+                <div id="answers" class="answers">
+                    <!-- Ответы будут добавлены динамически -->
+                </div>
+                <div id="explanation" class="explanation" style="display: none;">
+                    <h4>💡 Объяснение:</h4>
+                    <p id="explanationText"></p>
+                </div>
+            </div>
+            
+            <button id="nextBtn" class="next-btn-enhanced" onclick="nextQuestion()" style="display: none;">
+                Следующий вопрос ➡️
+            </button>
+        </div>
+
+        <!-- Экран результатов (обновленный) -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-header-enhanced">
+                <h1>🎯 Отличная игра!</h1>
+                <div class="player-name">
+                    <span id="resultsPlayerName">Игрок</span>
+                </div>
+            </div>
+            
+            <div class="result-card-enhanced">
+                <div class="result-main">
+                    <div class="result-score">
+                        <div id="finalScore" class="final-score">0/7</div>
+                        <div id="finalPercentage" class="final-percentage">0%</div>
+                    </div>
+                    
+                    <div class="result-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Категория:</span>
+                            <span id="resultCategory">🏛 История</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Сложность:</span>
+                            <span id="resultDifficulty">🟢 Легкий</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Время:</span>
+                            <span id="resultTime">2:15</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Подсказки:</span>
+                            <span id="resultHints">1 использовано</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-grade">
+                        <div id="resultGrade" class="grade-text">Отлично!</div>
+                        <div id="resultMessage" class="grade-message">Фантастический результат!</div>
+                    </div>
+                </div>
+                
+                <div id="newAchievements" class="new-achievements" style="display: none;">
+                    <h3>🎉 Новые достижения!</h3>
+                    <div id="achievementsList" class="achievements-list">
+                        <!-- Новые достижения будут добавлены динамически -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-actions-enhanced">
+                <button class="action-btn play-again" onclick="showMainMenu()">
+                    🔄 Играть снова
+                </button>
+                <button class="action-btn share-result" onclick="shareResult()">
+                    📤 Поделиться
+                </button>
+                <button class="action-btn view-profile" onclick="showTab('profile'); showMainMenu();">
+                    👤 Профиль
+                </button>
+            </div>
+        </div>
+
+        <!-- Экран загрузки (обновленный) -->
+        <div id="loadingScreen" class="screen loading-screen">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <h2 id="loadingTitle">Подготовка вопросов...</h2>
+                <p id="loadingSubtitle">Создаем для вас увлекательные задания</p>
+                <div class="loading-tips">
+                    <p id="loadingTip">💡 Знаете ли вы, что регулярные интеллектуальные упражнения улучшают память?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
